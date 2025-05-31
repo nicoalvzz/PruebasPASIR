@@ -58,6 +58,7 @@ jobs:
           name: cypress-screenshots
           path: cypress/screenshots
 
+
   playwright:
     name: Ejecutar pruebas Playwright
     runs-on: ubuntu-latest
