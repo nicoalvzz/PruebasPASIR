@@ -1,0 +1,50 @@
+name: Run All Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  karate:
+    name: Karate Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: KarateProject/KarateProject
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Run Karate Tests
+        run: mvn test
+
+  cypress:
+    name: Cypress Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: PruebaCypress/PruebaCypress/cypress-e2e-framework
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npx cypress run
+
+  playwright:
+    name: Playwright Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: PruebasPlaywright/PruebasPlaywright
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npx playwright test
