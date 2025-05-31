@@ -46,6 +46,9 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
+      - name: Instalar Cypress (manual)
+        run: npx cypress install
+
       - name: Ejecutar pruebas Cypress
         run: npx cypress run --spec "cypress/cypress/e2e/**/*.cy.{js,ts}"
 
