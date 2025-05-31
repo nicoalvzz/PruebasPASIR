@@ -44,10 +44,19 @@ jobs:
           node-version: '18'
 
       - name: Instalar dependencias
-        run: npm install
+        run: npm ci
 
       - name: Ejecutar pruebas Cypress
-        run: npx cypress run
+        run: npx cypress run --browser chrome
+        env:
+          CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+
+      - name: Guardar capturas de error si falla
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
 
   playwright:
     name: Ejecutar pruebas Playwright
