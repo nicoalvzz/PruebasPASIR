@@ -47,10 +47,10 @@ jobs:
         run: npm install
 
       - name: Instalar Cypress (manual)
-        run: npx cypress install
+        run: npm cypress install
 
       - name: Ejecutar pruebas Cypress por CLI
-        run: npx cypress run --spec "cypress-e2e-framework/cypress/cypress/e2e/**/*.cy.{js,ts}"
+        run: npm cypress run --spec "cypress-e2e-framework/cypress/cypress/e2e/**/*.cy.{js,ts}"
 
 
   playwright:
