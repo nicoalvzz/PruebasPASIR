@@ -50,7 +50,8 @@ jobs:
         run: npm install --save-dev cypress
 
       - name: Ejecutar pruebas Cypress por CLI
-        run: npx cypress run --spec "cypress-e2e-framework/cypress/cypress/e2e/**/*.cy.{js,ts}"
+        run: npx cypress run --spec "cypress/e2e/**/*.cy.{js,ts}"
+
 
 
   playwright:
