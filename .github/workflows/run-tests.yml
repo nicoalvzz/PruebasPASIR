@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: PruebaCypress/PruebaCypress
+        working-directory: PruebaCypress/PruebaCypress/cypress-e2e-framework
     steps:
       - name: Checkout del código
         uses: actions/checkout@v3
@@ -45,12 +45,13 @@ jobs:
 
       - name: Instalar dependencias
         run: npm install
-        
+
       - name: Instalar Cypress (manual)
         run: npm install --save-dev cypress
 
-      - name: Ejecutar pruebas Cypress (headless CLI)
+      - name: Ejecutar pruebas Cypress por CLI
         run: npx cypress run --spec "cypress-e2e-framework/cypress/cypress/e2e/**/*.cy.{js,ts}"
+
 
   playwright:
     name: Ejecutar pruebas Playwright
@@ -75,3 +76,4 @@ jobs:
 
       - name: Ejecutar pruebas Playwright
         run: npx playwright test
+
